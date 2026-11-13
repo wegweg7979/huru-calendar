@@ -61,7 +61,7 @@ Then read the data over IPC, which is what the bar widget does:
 # toolchain local so the build cannot try to fetch a different one.
 export GOTOOLCHAIN=local
 export CGO_ENABLED=0
-export BUILD_TIME="$(date -u '+%Y-%m-%d_%H:%M:%S')"
+export BUILD_TIME="$(date -u '+%%Y-%%m-%%d_%%H:%%M:%%S')"
 cd core
 go build -trimpath \
     -ldflags "-s -w -X main.Version=%{version} -X main.BuildTime=${BUILD_TIME}" \
