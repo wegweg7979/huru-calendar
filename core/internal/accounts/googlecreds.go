@@ -28,7 +28,7 @@ func ResolveGoogleClient(explicit oauth.GoogleAppCredentials) (oauth.GoogleAppCr
 
 	builtin, ok := oauth.BuiltinGoogleCredentials()
 	if !ok {
-		return oauth.GoogleAppCredentials{}, errors.New("this build has no built-in google oauth client; supply --client-id and --client-secret (see `dcal account setup google`)")
+		return oauth.GoogleAppCredentials{}, errors.New("this build has no built-in google oauth client; supply --client-id and --client-secret (see `hcal account setup google`)")
 	}
 	return builtin, nil
 }

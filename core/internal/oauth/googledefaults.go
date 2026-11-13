@@ -7,18 +7,19 @@ import "encoding/base64"
 // values are not searchable plaintext in the repository; installed-app
 // credentials cannot be kept confidential.
 //
-// These credentials identify the upstream Dux Calendar application.
-// Distribution packages built from this repository may ship them unchanged;
-// forks, rebranded builds, and unrelated applications are not authorized to
-// use them (see "OAuth client credentials" in the README) and must register
-// their own client, overriding both vars via
-// -ldflags "-X .../internal/oauth.builtinGoogleClientID=..." (plaintext), or
-// blanking the encoded vars to require user-supplied credentials.
+// Blanked in the Huru Calendar fork: the shipped client identifies the upstream
+// Dux Calendar application, and its terms do not authorize rebranded builds
+// (see "OAuth client credentials" in the upstream README). Blank means
+// BuiltinGoogleCredentials reports "none", so a caller must supply its own via
+// -ldflags "-X .../internal/oauth.builtinGoogleClientID=...", the
+// DANKCAL_GOOGLE_CLIENT_ID / DANKCAL_GOOGLE_CLIENT_SECRET environment
+// variables, or the in-app custom-client option. iCloud/CalDAV needs no OAuth
+// client at all.
 var (
 	builtinGoogleClientID     = ""
 	builtinGoogleClientSecret = ""
-	encodedGoogleClientID     = "UlxZHFBRWl9YXVpMVUhVBQQNUBEdXQ8MDB0EH1QYCwUIGgdbDEVJSVYNH18TTw0VHhdPFQwACkIBFB0OHgoBGwxLChVACAwM"
-	encodedGoogleClientSecret = "JCAufTQ5Qww+Hi0sGX9UORRcElI8PBYuFAMQFxxkLgcKCB4="
+	encodedGoogleClientID     = ""
+	encodedGoogleClientSecret = ""
 )
 
 func BuiltinGoogleCredentials() (GoogleAppCredentials, bool) {

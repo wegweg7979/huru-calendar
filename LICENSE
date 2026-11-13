@@ -19,3 +19,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Huru Calendar is a fork of Dux Calendar <https://github.com/duxlabs-dev/dux-calendar>,
+Copyright (c) 2025-2026 Avenge Media LLC, released under the MIT License above.
+Copyright in the changes made for this fork is held by its respective authors and
+is released under the same terms. Upstream's OAuth client credentials are not
+included in this fork.

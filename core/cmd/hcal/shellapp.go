@@ -14,7 +14,7 @@ import (
 
 var shellApp = shellapp.New(shellapp.Config{
 	ID:       "dankcal",
-	QSAppID:  "dev.duxlabs.calendar",
+	QSAppID:  "huru-calendar",
 	Version:  Version,
 	Embedded: embeddedShell{},
 	QtBase:   qtbaseembed.Extract,

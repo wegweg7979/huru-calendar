@@ -8,7 +8,7 @@ var windowView string
 
 var showCmd = &cobra.Command{
 	Use:     "show",
-	Short:   "Show the calendar window, launching dcal if it is not running",
+	Short:   "Show the calendar window, launching hcal if it is not running",
 	PreRunE: shellApp.ResolveConfig,
 	RunE: func(_ *cobra.Command, _ []string) error {
 		return shellApp.CallOrLaunch("ui.show", viewParams())
@@ -17,7 +17,7 @@ var showCmd = &cobra.Command{
 
 var toggleCmd = &cobra.Command{
 	Use:     "toggle",
-	Short:   "Toggle calendar window visibility, launching dcal if it is not running",
+	Short:   "Toggle calendar window visibility, launching hcal if it is not running",
 	PreRunE: shellApp.ResolveConfig,
 	RunE: func(_ *cobra.Command, _ []string) error {
 		return shellApp.CallOrLaunch("ui.toggle", viewParams())

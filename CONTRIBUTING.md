@@ -9,7 +9,7 @@ To contribute fork this repository, make your changes, and open a pull request.
 Clone with submodules — the shared widget library ([dux-qml-common](https://github.com/duxlabs-dev/dux-qml-common)) is vendored at `dux-qml-common/` and symlinked into `quickshell/DCommon`:
 
 ```bash
-git clone --recurse-submodules https://github.com/duxlabs-dev/dux-calendar.git
+git clone --recurse-submodules https://github.com/wegweg7979/huru-calendar.git
 # or, in an existing clone:
 git submodule update --init
 ```
@@ -94,7 +94,7 @@ touch .qmlls.ini
 
 ```bash
 # from core/
-DCAL_ENABLE_HOTRELOAD=1 go run ./cmd/dcal run -c ../quickshell
+DCAL_ENABLE_HOTRELOAD=1 go run ./cmd/hcal run -c ../quickshell
 ```
 
 ### I18n/Localization

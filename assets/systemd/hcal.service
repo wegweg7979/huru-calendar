@@ -1,0 +1,21 @@
+[Unit]
+Description=Huru Calendar (iCloud sync daemon)
+Documentation=https://github.com/wegweg7979/huru-calendar
+After=graphical-session.target
+PartOf=graphical-session.target
+# With RestartSec=2 the default limit (5 starts per 10s) is never reached, so a persistent failure would restart forever.
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+# Daemon only: the IPC + HTTP backend that syncs iCloud (CalDAV) and serves the
+# Hurunagus bar widget over a unix socket. This fork ships no Qt UI, so the unit
+# needs neither a shell process nor the dux-qt-base runtime.
+ExecStart=/usr/bin/hcal daemon
+Restart=on-failure
+RestartSec=2
+Slice=app.slice
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,4 +1,4 @@
-// Package shellembed carries the quickshell UI inside the dcal binary and
+// Package shellembed carries the quickshell UI inside the hcal binary and
 // materializes it at runtime via dankgo/shellapp/shellfs, since quickshell
 // needs a real filesystem path. Customization goes through -c /
 // DANKCAL_SHELL_DIR instead of editing the extraction.

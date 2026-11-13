@@ -23,7 +23,7 @@ func ResolveMicrosoftClient(explicit oauth.MicrosoftAppCredentials) (oauth.Micro
 
 	builtin, ok := oauth.BuiltinMicrosoftCredentials()
 	if !ok {
-		return oauth.MicrosoftAppCredentials{}, errors.New("this build has no built-in microsoft app registration; supply --client-id (see `dcal account setup microsoft`)")
+		return oauth.MicrosoftAppCredentials{}, errors.New("this build has no built-in microsoft app registration; supply --client-id (see `hcal account setup microsoft`)")
 	}
 	builtin.Tenant = explicit.Tenant
 	return builtin, nil

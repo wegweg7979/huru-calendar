@@ -44,11 +44,11 @@ var eventsImportCalendar string
 var eventsImportCmd = &cobra.Command{
 	Use:   "import <file.ics>",
 	Short: "Import events from an .ics file into a calendar",
-	Long:  "Import every event in an .ics file (e.g. an emailed invitation) into the given calendar. Events already present in that calendar are left untouched. Find calendar ids with 'dcal ipc calendars.list'.",
+	Long:  "Import every event in an .ics file (e.g. an emailed invitation) into the given calendar. Events already present in that calendar are left untouched. Find calendar ids with 'hcal ipc calendars.list'.",
 	Args:  cobra.ExactArgs(1),
 	RunE: func(_ *cobra.Command, args []string) error {
 		if eventsImportCalendar == "" {
-			return errors.New("--calendar is required (ids: dcal ipc calendars.list)")
+			return errors.New("--calendar is required (ids: hcal ipc calendars.list)")
 		}
 		ics, err := readICSFile(args[0])
 		if err != nil {
@@ -101,7 +101,7 @@ func decodeImported(result any) ([]importedItem, error) {
 
 func init() {
 	eventsRSVPCmd.Flags().StringVar(&eventsRSVPOccurrenceStart, "occurrence-start", "", "RFC3339 start time; reply for this single occurrence of a recurring event")
-	eventsImportCmd.Flags().StringVar(&eventsImportCalendar, "calendar", "", "Target calendar id (see 'dcal ipc calendars.list')")
+	eventsImportCmd.Flags().StringVar(&eventsImportCalendar, "calendar", "", "Target calendar id (see 'hcal ipc calendars.list')")
 	eventsCmd.AddCommand(eventsRSVPCmd)
 	eventsCmd.AddCommand(eventsImportCmd)
 }

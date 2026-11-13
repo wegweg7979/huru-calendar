@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Dux Calendar Bug Report
+        ## Huru Calendar Bug Report
         Limit your report to one issue per submission unless similarly related
   - type: dropdown
     id: compositor
@@ -65,7 +65,7 @@ body:
     id: version
     attributes:
       label: Version
-      placeholder: Output of `dcal version`
+      placeholder: Output of `hcal version`
     validations:
       required: true
   - type: textarea

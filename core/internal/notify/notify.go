@@ -14,9 +14,9 @@ import (
 )
 
 const (
-	appName = "Dux Calendar"
+	appName = "Huru Calendar"
 	// desktopEntry must match the installed .desktop file and icon basename.
-	desktopEntry = "dev.duxlabs.calendar"
+	desktopEntry = "huru-calendar"
 
 	portalBusName    = "org.freedesktop.portal.Desktop"
 	portalObjectPath = "/org/freedesktop/portal/desktop"

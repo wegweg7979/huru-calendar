@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	credentialDescription = "Dux Calendar credential"
+	credentialDescription = "Huru Calendar credential"
 
 	secretServiceBus    = "org.freedesktop.secrets"
 	secretServicePath   = "/org/freedesktop/secrets"

@@ -1,13 +1,13 @@
-# Root Makefile for Dux Calendar
+# Root Makefile for Huru Calendar
 # Orchestrates the Go core build and local installation of the
 # binary (with the quickshell UI embedded), icon, desktop entry,
 # and systemd unit.
 
-BINARY_NAME=dcal
+BINARY_NAME=hcal
 # Quickshell config dir name (kept as dankcal for config-path compatibility).
 SHELL_NAME=dankcal
 # Icon name matches the desktop AppId so sandboxed and native installs agree.
-ICON_NAME=dev.duxlabs.calendar
+ICON_NAME=huru-calendar
 CORE_DIR=core
 BUILD_DIR=$(CORE_DIR)/bin
 PREFIX ?= /usr/local
@@ -30,7 +30,7 @@ SHELL_DIR=quickshell
 # embedded in the binary since the single-binary distribution change.
 SHELL_INSTALL_DIR=$(DATA_DIR)/quickshell/$(SHELL_NAME)
 ASSETS_DIR=assets
-DESKTOP_ID=dev.duxlabs.calendar
+DESKTOP_ID=huru-calendar
 ASSET_INSTALL=PREFIX="$(PREFIX)" DESTDIR="$(DESTDIR)" DATA_DIR="$(DATA_DIR)" APPLICATIONS_DIR="$(APPLICATIONS_DIR)" ICON_DIR="$(ICON_DIR)" METAINFO_DIR="$(METAINFO_DIR)" sh scripts/install-assets.sh
 
 .PHONY: all build dev run clean test fmt vet migrate migrate-checksum update-common update-qtbase i18n-extract i18n-local i18n-test i18n-push i18n-sync i18n-check install install-bin install-icon install-desktop install-systemd uninstall uninstall-bin uninstall-shell uninstall-icon uninstall-desktop uninstall-systemd flatpak-build flatpak-run flatpak-lint flatpak-modules help
@@ -132,15 +132,15 @@ install-metainfo:
 install-systemd:
 	@echo "Installing systemd user service to $(SYSTEMD_USER_DIR)..."
 	@mkdir -p $(SYSTEMD_USER_DIR)
-	@sed 's|/usr/bin/dcal|$(INSTALL_DIR)/$(BINARY_NAME)|g' $(ASSETS_DIR)/systemd/$(BINARY_NAME).service > $(SYSTEMD_USER_DIR)/$(BINARY_NAME).service
+	@sed 's|/usr/bin/hcal|$(INSTALL_DIR)/$(BINARY_NAME)|g' $(ASSETS_DIR)/systemd/$(BINARY_NAME).service > $(SYSTEMD_USER_DIR)/$(BINARY_NAME).service
 	@chmod 644 $(SYSTEMD_USER_DIR)/$(BINARY_NAME).service
 	@if [ -n "$(SUDO_USER)" ]; then chown $(SUDO_USER) $(SYSTEMD_USER_DIR)/$(BINARY_NAME).service; fi
 
 install: install-bin install-icon install-desktop install-metainfo
 	@echo ""
 	@echo "Installation complete."
-	@echo "Launch with 'dcal show' or the Dux Calendar desktop entry."
-	@echo "Optional: 'make install-systemd' then 'systemctl --user enable --now dcal'."
+	@echo "Launch with 'hcal show' or the Huru Calendar desktop entry."
+	@echo "Optional: 'make install-systemd' then 'systemctl --user enable --now hcal'."
 
 uninstall-bin:
 	@rm -f $(DESTDIR)$(INSTALL_DIR)/$(BINARY_NAME)
@@ -165,7 +165,7 @@ uninstall: uninstall-desktop uninstall-icon uninstall-shell uninstall-bin uninst
 
 help:
 	@echo "Build:"
-	@echo "  build              - Build the dcal binary (release flags)"
+	@echo "  build              - Build the hcal binary (release flags)"
 	@echo "  dev                - Fast development build"
 	@echo "  run                - Build and run against the in-repo quickshell config"
 	@echo "  clean / test / fmt / vet"

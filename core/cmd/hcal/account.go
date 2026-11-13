@@ -75,7 +75,7 @@ var accountListCmd = &cobra.Command{
 		}
 
 		if len(items) == 0 {
-			fmt.Println("No accounts configured. Run `dcal account add --help` to see providers.")
+			fmt.Println("No accounts configured. Run `hcal account add --help` to see providers.")
 			return nil
 		}
 
@@ -118,7 +118,7 @@ var accountRemoveCmd = &cobra.Command{
 		acc, err := st.repo.GetAccount(ctx, args[0])
 		if err != nil {
 			if repo.IsNotFound(err) {
-				return fmt.Errorf("no account %q (see `dcal account list`)", args[0])
+				return fmt.Errorf("no account %q (see `hcal account list`)", args[0])
 			}
 			return err
 		}
@@ -194,7 +194,7 @@ var accountSetupCmd = &cobra.Command{
 			_, builtin = oauth.BuiltinMicrosoftCredentials()
 		}
 		if builtin {
-			fmt.Printf("Dux Calendar ships with a built-in %s client — `dcal account add %s` just works.\n", accounts.ProviderName(args[0]), args[0])
+			fmt.Printf("Huru Calendar ships with a built-in %s client — `hcal account add %s` just works.\n", accounts.ProviderName(args[0]), args[0])
 			fmt.Println("Follow these steps only if you want to use your own OAuth client.")
 			fmt.Println()
 		}
@@ -213,12 +213,12 @@ var accountSetupCmd = &cobra.Command{
 		}
 		switch args[0] {
 		case "google":
-			fmt.Println("Then run:  dcal account add google --client-id <id> --client-secret <secret>")
-			fmt.Println("      or:  dcal account add google --credentials client_secret.json")
+			fmt.Println("Then run:  hcal account add google --client-id <id> --client-secret <secret>")
+			fmt.Println("      or:  hcal account add google --credentials client_secret.json")
 		case "microsoft":
-			fmt.Println("Then run:  dcal account add microsoft --client-id <id>")
+			fmt.Println("Then run:  hcal account add microsoft --client-id <id>")
 		default:
-			fmt.Printf("Then run:  dcal account add %s\n", args[0])
+			fmt.Printf("Then run:  hcal account add %s\n", args[0])
 		}
 		return nil
 	},

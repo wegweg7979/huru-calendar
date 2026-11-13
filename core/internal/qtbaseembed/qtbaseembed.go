@@ -1,4 +1,4 @@
-// Package qtbaseembed carries libdux-qt-base.so inside the dcal binary and
+// Package qtbaseembed carries libdux-qt-base.so inside the hcal binary and
 // materializes it for dlopen via dankgo/shellapp/shellfs, the same way
 // shellembed does for the QML tree.
 package qtbaseembed

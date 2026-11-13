@@ -7,9 +7,9 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "dcal",
-	Short:   "Dux Calendar CLI",
-	Long:    "Dux Calendar — local, Google, Microsoft, CalDAV, and iCloud calendars in one standalone app.",
+	Use:     "hcal",
+	Short:   "Huru Calendar CLI",
+	Long:    "Huru Calendar — iCloud (CalDAV) calendar sync daemon for the Hurunagus desktop.",
 	Args:    cobra.NoArgs,
 	PreRunE: shellApp.ResolveConfig,
 	RunE: func(_ *cobra.Command, _ []string) error {
@@ -28,7 +28,7 @@ var versionCmd = &cobra.Command{
 				"buildTime": BuildTime,
 			})
 		}
-		fmt.Printf("dcal %s (commit %s, built %s)\n", Version, Commit, BuildTime)
+		fmt.Printf("huru-calendar %s (commit %s, built %s)\n", Version, Commit, BuildTime)
 		return nil
 	},
 }

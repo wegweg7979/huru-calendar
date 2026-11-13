@@ -14,7 +14,7 @@ import re
 import subprocess
 import sys
 
-METAINFO = pathlib.Path("assets/dev.duxlabs.calendar.metainfo.xml")
+METAINFO = pathlib.Path("assets/huru-calendar.metainfo.xml")
 MANIFEST = pathlib.Path("distro/flatpak/com.danklinux.dankcalendar.yml")
 SKIP_SUBJECT = re.compile(r"^(nix|flake|i18n|flatpak|ci|chore|build)[(:]", re.I)
 RELEASE_LINE = re.compile(r'^ *<release version="([^"]+)"', re.M)

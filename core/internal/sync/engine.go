@@ -432,7 +432,7 @@ func (e *Engine) recordAuthState(ctx context.Context, acc *ent.Account, syncErr 
 
 	if needsReauth && e.sender != nil {
 		if _, err := e.sender.Send(notify.Notification{
-			Summary: "Dux Calendar",
+			Summary: "Huru Calendar",
 			Body:    fmt.Sprintf("%s needs to sign in again to keep syncing.", acc.DisplayName),
 			Urgency: notify.UrgencyNormal,
 		}); err != nil {

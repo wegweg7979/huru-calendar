@@ -3,10 +3,10 @@
 set -eu
 
 asset_dir=$(CDPATH= cd -- "$(dirname -- "$0")/../assets" && pwd)
-desktop_id=dev.duxlabs.calendar
+desktop_id=huru-calendar
 legacy_id=com.danklinux.dankcalendar
 prefix=${PREFIX:-/usr/local}
-dcal_exec=${DCAL_EXEC:-$prefix/bin/dcal}
+dcal_exec=${DCAL_EXEC:-$prefix/bin/hcal}
 staging=${DESTDIR:-}
 data_dir=${DATA_DIR:-$prefix/share}
 applications_dir=${APPLICATIONS_DIR:-$data_dir/applications}
@@ -24,7 +24,7 @@ install_desktop() {
         exit 1
     fi
     mkdir -p "$staging$applications_dir"
-    sed "s|^Exec=dcal |Exec=$dcal_exec |" \
+    sed "s|^Exec=hcal |Exec=$dcal_exec |" \
         "$asset_dir/$desktop_id.desktop" > "$staging$applications_dir/$desktop_id.desktop"
     chmod 644 "$staging$applications_dir/$desktop_id.desktop"
     rm -f "$staging$applications_dir/$legacy_id.desktop"

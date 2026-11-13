@@ -33,7 +33,7 @@ var syncCmd = &cobra.Command{
 			if jsonOutput {
 				return printJSON(syncResult("started", true, accountID))
 			}
-			fmt.Println("sync started in the running dcal daemon")
+			fmt.Println("sync started in the running hcal daemon")
 			return nil
 		}
 
@@ -54,7 +54,7 @@ var syncCmd = &cobra.Command{
 		default:
 			if err := syncOneAccount(ctx, st, accountID); err != nil {
 				if repo.IsNotFound(err) {
-					return fmt.Errorf("no account %q (see `dcal account list`)", accountID)
+					return fmt.Errorf("no account %q (see `hcal account list`)", accountID)
 				}
 				return err
 			}

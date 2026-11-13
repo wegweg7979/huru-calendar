@@ -49,7 +49,7 @@ import (
 
 var daemonCmd = &cobra.Command{
 	Use:   "daemon",
-	Short: "Run the dcal daemon (IPC + HTTP, no UI)",
+	Short: "Run the hcal daemon (IPC + HTTP, no UI)",
 	RunE:  runDaemon,
 }
 
@@ -261,7 +261,7 @@ func runDaemon(_ *cobra.Command, _ []string) error {
 	}
 	defer svc.Close()
 
-	log.Infof("dcal daemon ready (ipc=%s http=%s)", svc.SocketPath(), svc.httpAddr)
+	log.Infof("hcal daemon ready (ipc=%s http=%s)", svc.SocketPath(), svc.httpAddr)
 
 	// No UI supervisor to restart here; unhandled SIGUSR1 from ui.restart
 	// would terminate the daemon.
@@ -322,7 +322,7 @@ func startHTTP(ctx context.Context, cfg *config.Config, r *repo.Repo, registry *
 			return
 		}
 		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-		_, _ = w.Write([]byte("dcal daemon"))
+		_, _ = w.Write([]byte("hcal daemon"))
 	})
 
 	router.Group(func(rt chi.Router) {
@@ -330,14 +330,14 @@ func startHTTP(ctx context.Context, cfg *config.Config, r *repo.Repo, registry *
 
 		huma.NewError = humaerr.HumaErrorFunc
 
-		humaCfg := httpapi.NewHumaConfig("Dux Calendar API", Version)
+		humaCfg := httpapi.NewHumaConfig("Huru Calendar API", Version)
 		humaCfg.DocsPath = ""
 		api := humachi.New(rt, humaCfg)
 
 		mw := middleware.NewMiddleware(api)
 		api.UseMiddleware(mw.Recoverer)
 
-		rt.Get("/docs", httpapi.DocsHandler("Dux Calendar API"))
+		rt.Get("/docs", httpapi.DocsHandler("Huru Calendar API"))
 
 		srvImpl := &server.Server{
 			Cfg:      cfg,

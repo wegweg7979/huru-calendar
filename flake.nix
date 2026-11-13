@@ -1,5 +1,5 @@
 {
-  description = "Dux Calendar";
+  description = "Huru Calendar";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -87,7 +87,7 @@
             modRoot = "core";
             vendorHash = "sha256-0dhVy8BNTRrNo1cFAVlR80yaUMqa2PCNbx4cYl04g9g=";
 
-            subPackages = [ "cmd/dcal" ];
+            subPackages = [ "cmd/hcal" ];
 
             tags = [
               "withshell"
@@ -130,33 +130,33 @@
             ];
 
             postInstall = ''
-              install -Dm644 ${./assets/dev.duxlabs.calendar.desktop} \
-                $out/share/applications/dev.duxlabs.calendar.desktop
-              substituteInPlace $out/share/applications/dev.duxlabs.calendar.desktop \
-                --replace-fail 'Exec=dcal ' 'Exec='$out'/bin/dcal '
-              install -Dm644 ${./assets/dev.duxlabs.calendar.svg} \
-                $out/share/icons/hicolor/scalable/apps/dev.duxlabs.calendar.svg
+              install -Dm644 ${./assets/huru-calendar.desktop} \
+                $out/share/applications/huru-calendar.desktop
+              substituteInPlace $out/share/applications/huru-calendar.desktop \
+                --replace-fail 'Exec=hcal ' 'Exec='$out'/bin/hcal '
+              install -Dm644 ${./assets/huru-calendar.svg} \
+                $out/share/icons/hicolor/scalable/apps/huru-calendar.svg
 
-              install -Dm644 ${./assets/systemd/dcal.service} \
-                $out/lib/systemd/user/dcal.service
-              substituteInPlace $out/lib/systemd/user/dcal.service \
-                --replace-fail /usr/bin/dcal $out/bin/dcal
+              install -Dm644 ${./assets/systemd/hcal.service} \
+                $out/lib/systemd/user/hcal.service
+              substituteInPlace $out/lib/systemd/user/hcal.service \
+                --replace-fail /usr/bin/hcal $out/bin/hcal
 
-              installShellCompletion --cmd dcal \
-                --bash <($out/bin/dcal completion bash) \
-                --fish <($out/bin/dcal completion fish) \
-                --zsh <($out/bin/dcal completion zsh)
+              installShellCompletion --cmd hcal \
+                --bash <($out/bin/hcal completion bash) \
+                --fish <($out/bin/hcal completion fish) \
+                --zsh <($out/bin/hcal completion zsh)
 
-              wrapProgram $out/bin/dcal \
+              wrapProgram $out/bin/hcal \
                 --prefix NIXPKGS_QT6_QML_IMPORT_PATH : "${mkQmlImportPath pkgs qtPackages}" \
                 --prefix QT_PLUGIN_PATH : "${mkQtPluginPath pkgs qtPackages}"
             '';
 
             meta = {
-              description = "Local, Google, Microsoft, and CalDAV calendars for the Dux desktop";
-              homepage = "https://github.com/duxlabs-dev/dux-calendar";
+              description = "iCloud (CalDAV) calendar sync daemon for the Hurunagus desktop";
+              homepage = "https://github.com/wegweg7979/huru-calendar";
               license = pkgs.lib.licenses.mit;
-              mainProgram = "dcal";
+              mainProgram = "hcal";
               platforms = pkgs.lib.platforms.linux;
             };
           }

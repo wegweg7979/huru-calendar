@@ -1,5 +1,5 @@
-BINARY_NAME=dcal
-SOURCE_DIR=cmd/dcal
+BINARY_NAME=hcal
+SOURCE_DIR=cmd/hcal
 BUILD_DIR=bin
 SHELL_SRC=../quickshell
 EMBED_DIR=internal/shellembed/dist
@@ -25,9 +25,9 @@ BUILD_LDFLAGS=-ldflags='-s -w -X main.Version=$(VERSION) -X main.BuildTime=$(BUI
 
 all: build completions
 
-# QTBASE=1 builds the quickshell runtime from the dux-qt-base submodule and embeds it in dcal as libdux-qt-base.so,
-# which `dcal qs` dlopens. With the default QTBASE=0, `dcal qs` dlopens an installed libdux-qt-base.so.0
-# (next to dcal or in the system library dirs, e.g. a dux-qt-base package). `dcal run --qs-child` runs upstream qs instead.
+# QTBASE=1 builds the quickshell runtime from the dux-qt-base submodule and embeds it in hcal as libdux-qt-base.so,
+# which `hcal qs` dlopens. With the default QTBASE=0, `hcal qs` dlopens an installed libdux-qt-base.so.0
+# (next to hcal or in the system library dirs, e.g. a dux-qt-base package). `hcal run --qs-child` runs upstream qs instead.
 QTBASE ?= 0
 QTBASE_SRC ?= ../dux-qt-base
 QTBASE_BUILD ?= build/dux-qt-base
@@ -135,4 +135,4 @@ mocks:
 
 help:
 	@echo "Targets: build dev qtbase clean-qtbase sync-shell completions install install-completions uninstall clean test cover fmt vet deps generate migrate migrate-checksum mocks"
-	@echo "QTBASE=1 embeds the dux-qt-base runtime from the submodule; by default dcal needs an installed dux-qt-base"
+	@echo "QTBASE=1 embeds the dux-qt-base runtime from the submodule; by default hcal needs an installed dux-qt-base"

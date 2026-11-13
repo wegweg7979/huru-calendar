@@ -14,13 +14,13 @@ import (
 
 var ipcCmd = &cobra.Command{
 	Use:   "ipc <method> [key=value...]",
-	Short: "Send an IPC request to the running dcal daemon",
-	Long: `Send an IPC request to the running dcal daemon.
+	Short: "Send an IPC request to the running hcal daemon",
+	Long: `Send an IPC request to the running hcal daemon.
 
-  dcal ipc <method> [key=value...]   invoke a method
-  dcal ipc list                      list every method and its params
+  hcal ipc <method> [key=value...]   invoke a method
+  hcal ipc list                      list every method and its params
 
-Method names and param keys complete with the shell (see 'dcal completion').`,
+Method names and param keys complete with the shell (see 'hcal completion').`,
 	Args:                  cobra.MinimumNArgs(1),
 	ValidArgsFunction:     completeIPC,
 	DisableFlagsInUseLine: true,
@@ -35,7 +35,7 @@ Method names and param keys complete with the shell (see 'dcal completion').`,
 		if socketPath == "" {
 			socketPath, err = ipc.FindRunningSocket()
 			if err != nil {
-				return fmt.Errorf("dcal daemon not running: %w", err)
+				return fmt.Errorf("hcal daemon not running: %w", err)
 			}
 		}
 
@@ -139,7 +139,7 @@ func printIPCList() {
 		}
 		fmt.Println()
 	}
-	fmt.Println("* = required   |   usage: dcal ipc <method> key=value ...")
+	fmt.Println("* = required   |   usage: hcal ipc <method> key=value ...")
 }
 
 func parseParams(args []string) (map[string]any, error) {

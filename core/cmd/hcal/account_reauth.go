@@ -31,7 +31,7 @@ var accountReauthCmd = &cobra.Command{
 		acc, err := st.repo.GetAccount(ctx, args[0])
 		if err != nil {
 			if repo.IsNotFound(err) {
-				return fmt.Errorf("no account %q (see `dcal account list`)", args[0])
+				return fmt.Errorf("no account %q (see `hcal account list`)", args[0])
 			}
 			return err
 		}
@@ -43,7 +43,7 @@ var accountReauthCmd = &cobra.Command{
 		case account.KindMicrosoft:
 			res, err = reauthMicrosoft(ctx, st, acc.ID)
 		default:
-			return fmt.Errorf("account %q is not an OAuth account; re-add it with `dcal account add`", acc.ID)
+			return fmt.Errorf("account %q is not an OAuth account; re-add it with `hcal account add`", acc.ID)
 		}
 		if err != nil {
 			return err

@@ -1,12 +1,12 @@
 name: Support Request
-description: Help with installation, usage, or general questions about Dux Calendar
+description: Help with installation, usage, or general questions about Huru Calendar
 labels:
   - support
 body:
   - type: markdown
     attributes:
       value: |
-        ## Dux Calendar Support Request
+        ## Huru Calendar Support Request
   - type: dropdown
     id: compositor
     attributes:
@@ -64,7 +64,7 @@ body:
     id: version
     attributes:
       label: Version
-      placeholder: Output of `dcal version`
+      placeholder: Output of `hcal version`
     validations:
       required: false
   - type: textarea

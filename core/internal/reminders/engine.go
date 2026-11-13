@@ -402,7 +402,7 @@ func (e *Engine) SendTest() error {
 	// notification servers may deduplicate matching notifications.
 	s := e.settings()
 	n := notify.Notification{
-		Summary:  "Dux Calendar",
+		Summary:  "Huru Calendar",
 		Body:     fmt.Sprintf("Test reminder — notifications are working. Sent at %s.", e.now().Format("15:04:05")),
 		Resident: s.ReminderPersist,
 		Urgency:  notify.UrgencyNormal,

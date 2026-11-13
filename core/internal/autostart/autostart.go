@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	entryName       = "dev.duxlabs.calendar.desktop"
+	entryName       = "huru-calendar.desktop"
 	legacyEntryName = "com.danklinux.dankcalendar.desktop"
 
 	portalBusName    = "org.freedesktop.portal.Desktop"
@@ -47,10 +47,10 @@ func flatpakMarkerPath() string {
 func desktopEntry(exec string) string {
 	return fmt.Sprintf(`[Desktop Entry]
 Type=Application
-Name=Dux Calendar
-Comment=Dux Calendar background service
+Name=Huru Calendar
+Comment=Huru Calendar background service
 Exec=%s
-Icon=dev.duxlabs.calendar
+Icon=huru-calendar
 Terminal=false
 X-GNOME-Autostart-enabled=true
 `, exec)
@@ -155,9 +155,9 @@ func requestBackground(autostart bool) error {
 
 	options := map[string]dbus.Variant{
 		"handle_token": dbus.MakeVariant(token),
-		"reason":       dbus.MakeVariant("Start Dux Calendar in the background at login."),
+		"reason":       dbus.MakeVariant("Start Huru Calendar in the background at login."),
 		"autostart":    dbus.MakeVariant(autostart),
-		"commandline":  dbus.MakeVariant(append([]string{"dcal"}, daemonArgs...)),
+		"commandline":  dbus.MakeVariant(append([]string{"hcal"}, daemonArgs...)),
 	}
 
 	obj := conn.Object(portalBusName, portalObjectPath)

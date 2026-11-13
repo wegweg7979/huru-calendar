@@ -353,7 +353,7 @@ func readGoogleCredentialsFile(path string) (oauth.GoogleAppCredentials, error) 
 func waitForBrowserAuth(ctx context.Context, authURL, redirectURL string, wait func(context.Context, time.Duration) (*oauth2.Token, error)) (*oauth2.Token, error) {
 	openBrowser(authURL)
 	infof("")
-	infof("Open the following URL in your browser to authorize Dux Calendar:")
+	infof("Open the following URL in your browser to authorize Huru Calendar:")
 	infof("")
 	infof("    %s", authURL)
 	infof("")
@@ -378,7 +378,7 @@ func finishAdd(ctx context.Context, st *cliStores, res accounts.Result) error {
 	switch {
 	case notifyDaemon(res.AccountID, true):
 		syncStatus = "daemon"
-		infof("syncing in the running dcal daemon")
+		infof("syncing in the running hcal daemon")
 	default:
 		infof("syncing...")
 		if syncErr = syncOneAccount(ctx, st, res.AccountID); syncErr != nil {
@@ -404,7 +404,7 @@ func finishAdd(ctx context.Context, st *cliStores, res accounts.Result) error {
 	}
 
 	if syncErr != nil {
-		return fmt.Errorf("initial sync failed (run `dcal sync %s` to retry): %w", res.AccountID, syncErr)
+		return fmt.Errorf("initial sync failed (run `hcal sync %s` to retry): %w", res.AccountID, syncErr)
 	}
 	return nil
 }

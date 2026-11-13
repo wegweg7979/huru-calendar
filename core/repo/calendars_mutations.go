@@ -56,7 +56,7 @@ func (r *Repo) UpsertCalendar(ctx context.Context, in UpsertCalendarInput) (*ent
 
 	cal, err := create.Save(ctx)
 	if err != nil && ent.IsConstraintError(err) {
-		// A concurrent sync (e.g. the daemon and a manual `dcal sync`) inserted
+		// A concurrent sync (e.g. the daemon and a manual `hcal sync`) inserted
 		// the same (account, remote_id) between our find and create; fall back
 		// to updating the row that now exists instead of failing the sync.
 		if existing, ferr := r.FindCalendarByRemoteID(ctx, in.AccountID, in.RemoteID); ferr == nil {

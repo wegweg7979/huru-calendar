@@ -101,7 +101,7 @@ func (r *Repo) UpsertEvent(ctx context.Context, in UpsertEventInput) (*ent.Event
 
 	ev, err := q.Save(ctx)
 	if err != nil && ent.IsConstraintError(err) {
-		// A concurrent sync (e.g. the daemon and a manual `dcal sync`) inserted
+		// A concurrent sync (e.g. the daemon and a manual `hcal sync`) inserted
 		// the same (calendar, uid) between our find and create; fall back to
 		// updating the row that now exists instead of failing the sync.
 		if existing, ferr := r.FindEventByUID(ctx, in.CalendarID, in.UID); ferr == nil {
